@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Track Assignments</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-900">
+    <header class="bg-blue-600 text-white p-4">
+        <h1 class="text-2xl">University Study Planner</h1>
+        <nav>
+            <ul class="flex space-x-4">
+                <li><a href="index.html" class="hover:underline">Home</a></li>
+                <li><a href="add_courses.html" class="hover:underline">Add Courses</a></li>
+                <li><a href="track_assignments.html" class="hover:underline">Track Assignments</a></li>
+                <li><a href="track_exams.html" class="hover:underline">Track Exams</a></li>
+                <li><a href="set_study_goals.html" class="hover:underline">Set Study Goals</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="p-4">
+        <h2 class="text-xl font-bold">Track Your Assignments</h2>
+        <form id="assignment-form">
+            <input type="text" placeholder="Assignment Title" class="border p-2 mb-2 w-full" required />
+            <input type="date" class="border p-2 mb-2 w-full" required />
+            <button type="submit" class="bg-blue-500 text-white p-2 hover:bg-blue-700">Add Assignment</button>
+        </form>
+        <div id="assignment-list" class="mt-4">
+            <h3 class="font-bold">Your Assignments:</h3>
+            <ul class="list-disc pl-6">
+                <!-- Placeholder: List of assignments will appear here -->
+            </ul>
+        </div>
+    </main>
+    <script>
+        document.getElementById('assignment-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const title = this.querySelector('input[type="text"]').value;
+            const dueDate = this.querySelector('input[type="date"]').value;
+            const list = document.getElementById('assignment-list').querySelector('ul');
+            const li = document.createElement('li');
+            li.textContent = `${title} (Due: ${dueDate})`;
+            list.appendChild(li);
+            this.reset();
+        });
+    </script>
+</body>
+</html>
